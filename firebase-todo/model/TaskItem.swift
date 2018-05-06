@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TodoItem {
+struct TaskItem {
     let _id: Int
     let done: Bool
     let text: String

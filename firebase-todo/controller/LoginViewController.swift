@@ -5,15 +5,22 @@
 //  Created by admin on 2018-05-05.
 //  Copyright © 2018 admin. All rights reserved.
 //
-
+import TransitionButton
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    var showLoginView: Bool = true
+    @IBOutlet weak var submitBtn: TransitionButton!
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPasswordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.addSubview(submitBtn)
+        switchToLoginView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +28,40 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Functions
+    func login () {
+        if emailField?.text != nil, passwordField?.text != nil {
+            Auth.auth().signIn(withEmail: emailField!.text!, password: passwordField!.text!) { (user, err) in
+                if err != nil {
+                    print(err.debugDescription)
+                    return
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        } else {
+        
+        }
     }
-    */
-
+    
+    // MARK: - Events
+    @IBAction func switchToLoginView() {
+        showLoginView = true
+        
+        confirmPasswordField.alpha = 0
+        nameField.alpha = 0
+        
+        submitBtn.setTitle("Login", for: .normal)
+        submitBtn.backgroundColor = .green
+        submitBtn.cornerRadius = 20
+        submitBtn.addTarget(self, action: #selector(loginOrRegister(_:)), for: .touchUpInside)
+    }
+    
+    @IBAction func loginOrRegister (_ button: TransitionButton) {
+        submitBtn.startAnimation()
+        if (showLoginView) {
+            login();
+        }
+        
+    }
 }

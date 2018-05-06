@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class TodoTableViewController: UITableViewController {
-    var todos: [TodoItem]? = []
+
+class TaskTableViewController: UITableViewController {
+    var todos: [TaskItem]? = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Auth.auth().currentUser == nil {
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController;
+            self.present(loginViewController, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
