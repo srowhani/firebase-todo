@@ -8,4 +8,6 @@ target 'firebase-todo' do
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
     pod 'TransitionButton'
+    pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
+
 end

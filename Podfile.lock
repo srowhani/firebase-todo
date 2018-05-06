@@ -42,12 +42,14 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SwiftValidator (4.0.0)
   - TransitionButton (0.3.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - TransitionButton
 
 SPEC REPOS:
@@ -64,6 +66,16 @@ SPEC REPOS:
     - nanopb
     - TransitionButton
 
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :commit: ba27b0e501bf542b5c1a97bed8f706d12fb2d4f4
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
 SPEC CHECKSUMS:
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
@@ -75,8 +87,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   TransitionButton: 0bf7e5ffe80030f9d10d57983a04acf2f511998a
 
-PODFILE CHECKSUM: bd84333e7b3b63a137342ea1f4d73b9ff3626b38
+PODFILE CHECKSUM: 687b1aeb516765df5be13102ab48da02fc767fdf
 
 COCOAPODS: 1.5.0
