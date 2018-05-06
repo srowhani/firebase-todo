@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-
+import FirebaseDatabase
 
 class TaskTableViewController: UITableViewController {
     var todos: [TaskItem]? = []
@@ -19,7 +19,19 @@ class TaskTableViewController: UITableViewController {
             let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController;
             self.present(loginViewController, animated: true, completion: nil)
         }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(performLogout))
+        
     }
+    
+    @IBAction func performLogout () {
+        try! Auth.auth().signOut()
+        let loginVc = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+        
+          self.present(loginVc, animated: true, completion: nil)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
